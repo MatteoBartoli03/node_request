@@ -37,6 +37,30 @@ app.get("/promise/:password", (req, res) => {
 	.catch(err => res.status(401).send(err))
 })
 
+app.get("/function/:num", ((req, res) => {
+	const functio = (arg) => {
+		return new Promise((resolve, reject) => {
+			if (!isNaN(parseInt(arg))) {
+				if (arg % 3 === 0) {
+					resolve(`${arg} diviso 3 è uguale a ${arg/3} con resto 0`)
+				} else if (arg % 3 === 1){
+					resolve(`${arg} diviso 3 è uguale a ${(arg-1)/3} con resto 1`)
+				} else if (arg % 3 === 2){
+					resolve(`${arg} diviso 3 è uguale a ${(arg-2)/3} con resto 2`)
+				}
+			} else {
+				reject("Non hai inserito un numero")
+			};
+		});
+	};
+
+	functio(req.params.num).then((data) => {
+		res.status(200).send(data)
+	}).catch((err) => {
+		res.status(400).send(err)
+	});
+}));
+
 app.all("*", (req, res) => {
 	res.status(404).send("PAGE NOT FOUND")
 });

@@ -62,7 +62,7 @@ app.get("/function/:num", (req, res) => {
   const funct = (arg) => {
     return new Promise((resolve, reject) => {
       if (!isNaN(parseInt(num))) {
-        if (arg % 2 == 0) {
+        if (arg % 2 === 0) {
           resolve("il numero è pari")
         } else {
           resolve("il numero è dispari")
