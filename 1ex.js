@@ -9,7 +9,7 @@ app.get("/daniele", (req, res) => {
 
 app.get("/saluta/:nome", (req, res) => {
   const nome1 = req.params.nome;
-  const nome = nome1.slice(1, nome1.lenght)
+  const nome = nome1.slice(0, nome1.lenght)
   res.status(200).send(`ciao ${nome} come va`);
 });
 

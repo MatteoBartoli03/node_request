@@ -13,7 +13,8 @@ app.get("/json", (req,res) => {
 		age: 31,
 		email: "luca31@email.it"
 	}
-	res.status(200).send(`${user.name} ha ${user.age} anni e la sua email è ${user.email}`)
+	let {name, age, email} = user
+	res.status(200).send(`${name} ha ${age} anni e la sua email è ${email}`)
 })
 
 app.get("/request", (req, res) => {
